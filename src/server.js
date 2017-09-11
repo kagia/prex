@@ -5,6 +5,8 @@ const connection = require('./connection')
 
 connection.then(() => {
   const app = express();
+
+  app.use(require('express-promise')());
   
   app.use(express.static(path.join(__dirname, '../public')))
   
