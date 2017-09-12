@@ -1,14 +1,9 @@
-const path = require('path');
-const express = require('express')
-
+const app = require('./app')
 const connection = require('./connection')
 
-connection.then(() => {
-  const app = express();
+const PORT = 8080
 
-  app.use(require('express-promise')());
-  
-  app.use(express.static(path.join(__dirname, '../public')))
-  
-  app.listen(8080)
-});
+connection.then(() => {
+  app.listen(PORT)
+  console.info(`http://localhost:${PORT}`)
+})

@@ -1,7 +1,8 @@
-import {h, render} from 'preact'
+import { h, render } from 'preact'
+import Main from './components/Main'
+
+import 'preact/devtools'
 
 render((
-  <span class="icon">
-    <i class="fa fa-home"></i>
-  </span>
+  <Main />
 ), document.body)
