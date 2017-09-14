@@ -1,21 +1,38 @@
-module.exports = {
-  entry: './src/client.js',
+const nodeExternals = require('webpack-node-externals')
+
+const baseConfig = {
   output: {
-    filename: 'client.js',
-    path: `${__dirname}/public/js`
+    filename: '[name].js',
+    path: __dirname
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['preact', 'es2015']
-          }
+          loader: 'babel-loader'
         }],
         exclude: /node_modules/
       }
     ]
   }
 }
+
+const clientConfig = Object.assign({
+  entry: {
+    'public/js/client': './src/client.js'
+  }
+}, baseConfig)
+
+const serverConfig = Object.assign({
+  entry: {
+    'bin/server': './src/server.js'
+  },
+  target: 'node',
+  externals: [nodeExternals()],
+  node: {
+    __dirname: true
+  }
+}, baseConfig)
+
+module.exports = [clientConfig, serverConfig]

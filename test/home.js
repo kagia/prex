@@ -1,8 +1,8 @@
 /* eslint-env mocha */
 
-const chai = require('chai')
-const request = require('supertest')
-const app = require('../src/app')
+import chai from 'chai'
+import request from 'supertest'
+import app from '../src/app'
 
 const expect = chai.expect
 

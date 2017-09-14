@@ -1,8 +1,7 @@
-const Promise = require('bluebird')
-const mongoose = require('mongoose')
+import Promise from 'bluebird'
+import mongoose from 'mongoose'
 
 mongoose.Promise = Promise
 
-const connection = mongoose.createConnection('mongodb://localhost', { useMongoClient: true })
-
-module.exports = connection
+export default mongoose
+  .createConnection('mongodb://localhost', { useMongoClient: true })
